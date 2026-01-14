@@ -9,7 +9,7 @@ from functools import wraps
 app = Flask(__name__)
 
 # Configurações do aplicativo
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:SUABcxIMbBhGjRzFzerSqGwLPjKxgzmW@centerbeam.proxy.rlwy.net:26934/railway"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
@@ -742,6 +742,7 @@ init_db()
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 
